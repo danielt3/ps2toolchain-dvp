@@ -29,6 +29,8 @@ else
 	PROC_NR=$(nproc)
 fi
 
+PROC_NR=1
+
 echo "Building with $PROC_NR jobs"
 
 ## For each target...
@@ -44,7 +46,7 @@ for TARGET in "dvp"; do
 	
 	## Compile and install.
 	make --quiet clean -j $PROC_NR || { exit 1; }
-	make --quiet -j 1 CFLAGS="$CFLAGS -O2 -Wno-implicit-function-declaration" LDFLAGS="$LDFLAGS -s" || { exit 1; }
+	make --quiet -j $PROC_NR CFLAGS="$CFLAGS -O2 -Wno-implicit-function-declaration" LDFLAGS="$LDFLAGS -s" || { exit 1; }
 	make --quiet install -j $PROC_NR || { exit 1; }
 	make --quiet clean -j $PROC_NR || { exit 1; }
 
