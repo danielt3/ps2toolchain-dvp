@@ -1,4 +1,4 @@
-name: CI
+name: CI-mingw-w64
 
 on:
   push:
