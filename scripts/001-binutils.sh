@@ -18,6 +18,8 @@ else
 	TARG_XTRA_OPTS=""
 fi
 
+TARG_XTRA_OPTS="--build=x86_64-linux-gnu --host=x86_64-w64-mingw32"
+
 ## Determine the maximum number of processes that Make can work with.
 if [ ${OSVER:0:5} == MINGW ]; then
 	PROC_NR=$NUMBER_OF_PROCESSORS
@@ -35,7 +37,7 @@ for TARGET in "dvp"; do
 	rm -rf build-$TARGET && mkdir build-$TARGET && cd build-$TARGET || { exit 1; }
 
 	## Configure the build.
-	../configure --quiet --disable-build-warnings --prefix="$PS2DEV/$TARGET" --target="$TARGET" $TARG_XTRA_OPTS || { exit 1; }
+	../configure --prefix="$PS2DEV/$TARGET" --target="$TARGET" $TARG_XTRA_OPTS || { exit 1; }
 	
 	## Compile and install.
 	make --quiet clean -j $PROC_NR || { exit 1; }
