@@ -23,7 +23,7 @@ jobs:
         sudo apt-get -y install texinfo bison flex gettext
 
     - name: Install Debian Buster texinfo bison flex mingw-w64
-      if: matrix.os == 'ubuntu-latest'
+      if: matrix.os == 'debian-buster'
       run: |
         sudo apt-get update
         sudo apt-get -y install texinfo bison flex gettext mingw-w64
