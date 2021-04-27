@@ -36,6 +36,9 @@ for TARGET in "dvp"; do
 	## Create and enter the build directory.
 	rm -rf build-$TARGET && mkdir build-$TARGET && cd build-$TARGET || { exit 1; }
 
+        ## first, configure intl
+        ../intl/configure --disable-build-warnings --prefix="$PS2DEV/$TARGET" --target="$TARGET" $TARG_XTRA_OPTS
+
 	## Configure the build.
 	../configure --disable-build-warnings --prefix="$PS2DEV/$TARGET" --target="$TARGET" $TARG_XTRA_OPTS || { exit 1; }
 	
