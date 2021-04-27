@@ -29,8 +29,6 @@ else
 	PROC_NR=$(nproc)
 fi
 
-PROC_NR=1
-
 echo "Building with $PROC_NR jobs"
 
 ## For each target...
