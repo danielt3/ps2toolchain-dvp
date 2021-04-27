@@ -41,7 +41,7 @@ for TARGET in "dvp"; do
 	
 	## Compile and install.
 	make --quiet clean -j $PROC_NR || { exit 1; }
-	make --quiet -j $PROC_NR CFLAGS="$CFLAGS -D_FORTIFY_SOURCE=0 -O2 -Wno-implicit-function-declaration" LDFLAGS="$LDFLAGS -s" || { exit 1; }
+	make --quiet -j 1 CFLAGS="$CFLAGS -D_FORTIFY_SOURCE=0 -O2 -Wno-implicit-function-declaration" LDFLAGS="$LDFLAGS -s" || { exit 1; }
 	make --quiet install -j $PROC_NR || { exit 1; }
 	make --quiet clean -j $PROC_NR || { exit 1; }
 
